@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { act } from 'react-dom/test-utils';
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
 
    ]
 
+   //33.10
    let students = [
     {id: 1, class: 5, name: 'Raju'},
     {id: 2, class: 4, name: 'Akash'},
@@ -19,6 +21,25 @@ function App() {
     {id: 5, class: 2, name: 'olodama'},
   ]
 
+  // 33.11
+
+  // useEffect(() => {
+
+  //   const [acting, setActing] = useState([])
+    
+
+  //   fetch('https://jsonplaceholder.typicode.com/users')
+  //   .then(res => res.json())
+  //   .then(jsonData => setActing(data))
+
+  // }, [])
+
+  let acting = [
+  {name: 'salam', tel:202355454},
+  {name: 'barkat', tel:3232320},
+  {name: 'jabbar', tel:1212140}
+]
+
    
 
   return (
@@ -26,6 +47,11 @@ function App() {
 
       <CountMovie/>
       
+      {/* 33.11 */}
+      {
+        acting.map(ac => <Actors aName={ac.name} aTel={ac.tel}></Actors>)
+      }
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
           
@@ -89,6 +115,25 @@ function School(props){
   )
 }
 
+// 33.11 component useEffect Data fetch
+
+function Actors(props){
+
+  let actorStyle = {
+    border: '2px solid blue',
+    margin: '10px',
+    padding: '5px',
+    borderRadius: '15px'
+
+  }
+
+  return(
+    <div style={actorStyle}>
+      <h3>Name: {props.aName}</h3>
+  <p>this is tel: {props.aTel}</p>
+    </div>
+  )
+}
 
 
 
